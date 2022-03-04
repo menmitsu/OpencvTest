@@ -33,8 +33,8 @@ int main( int argc, char** argv ) {
   cv::Mat image;
   image = cv::imread("test.png" ,cv::IMREAD_COLOR);
 
-  // VideoCapture video("udpsrc port=5000 ! application/x-rtp, media=(string)video, payload=(int)96, clock-rate=(int)90000, encoding-name=(string)H264, ssrc=(uint)3572028551, timestamp-offset=(uint)600628017, seqnum-offset=(uint)516, a-framerate=(string)30 ! rtph264depay ! queue max-size-buffers=0 max-size-bytes=0 max-size-time=1000000000 ! queue max-size-time=1000000 min-threshold-time=1000000 ! decodebin ! queue !  videoconvert ! appsink",CAP_GSTREAMER);
-  VideoCapture video("test.mp4");
+   VideoCapture video("udpsrc port=5000 ! application/x-rtp, media=(string)video, payload=(int)96, clock-rate=(int)90000, encoding-name=(string)H264, a-framerate=(string)30 ! rtph264depay ! queue max-size-buffers=0 max-size-bytes=0 max-size-time=1000000000 ! queue max-size-time=1000000 min-threshold-time=1000000 ! decodebin ! queue !  videoconvert ! appsink",CAP_GSTREAMER);
+ // VideoCapture video("test.mp4");
 
   Mat colorFrame;
 
@@ -46,7 +46,7 @@ int main( int argc, char** argv ) {
 
     video>>colorFrame;
 
-    cout<<std::clock() - begin;
+    imshow("Live Feed",colorFrame);
 
 }
 
